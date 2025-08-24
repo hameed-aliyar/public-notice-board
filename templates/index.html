@@ -6,7 +6,7 @@
     <title>Notes</title>
 </head>
 <body>
-    <h2>My Notes</h2>
+    <h1>My Notes</h1>
 
     <form method="POST">
         <label for="name">Name : </label><br>
@@ -18,9 +18,13 @@
         <button type="submit">Add Note</button>
     </form>
 
+    <h2>Notes</h2>
     <ul>
         {% for note in notes %}
-            <li>{{ note }}</li>
+            <li>
+                <b>{{ note["name"] }}</b> : {{ note["message"] }}
+                <small>( {{ note["created_at"] }} )</small>
+            </li>
         {% endfor %}
     </ul>
 </body>
