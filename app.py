@@ -9,6 +9,7 @@ def home():
     if request.method == "POST":
         name = request.form.get("name")
         message = request.form.get("message")
+
         print(f"{name} : {message}.")
 
     return render_template("index.html", notes = notes)
