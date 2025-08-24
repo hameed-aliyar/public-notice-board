@@ -1,1 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+ENV/
+env/
+*.env
+
+# Flask instance folder (contains your SQLite DB, configs)
 instance/
+
+# SQLite database files
+*.db
+
+# VS Code / JetBrains IDE settings
+.vscode/
+.idea/
+
+# Python packaging / distribution
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
