@@ -1,7 +1,17 @@
 import sqlite3
+import os
+from flask import Flask
 
-conn = sqlite3.connect("notes.db")
+app = Flask(__name__)
 
+
+os.makedirs(app.instance_path, exist_ok=True)
+
+
+db_path = os.path.join(app.instance_path, "notes.db")
+
+
+conn = sqlite3.connect(db_path)
 c = conn.cursor()
 
 
@@ -19,4 +29,4 @@ c.execute(
 conn.commit()
 conn.close()
 
-print("DB and Table created.")
+print("DB and Table created at {db_path}")
