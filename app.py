@@ -39,5 +39,27 @@ def api_add_note():
 
         return jsonify(dict(note))
 
+@app.route("/notes/<int:note_id>", methods=["PUT"])
+def update_note(note_id):
+    data = request.get_json()
+    new_message = data.get("message")
+
+    conn = get_db_connection()
+    conn.execute("UPDATE notes SET message = ? WHERE id = ?", (new_message, note_id))
+    conn.commit()
+
+    updated_note = conn.execute("SELECT * FROM notes WHERE id = ?", (note_id,)).fetchone()
+    conn.close()
+
+    return jsonify(dict(updated_note))
+
+@app.route("/notes/<int:note_id>", methods=["DELETE"])
+def delete_note(note_id):
+     conn = get_db_connection()
+     conn.execute("DELETE FROM notes WHERE id = ?", (note_id,))
+     conn.commit()
+     conn.close()
+     return jsonify({"success": True, "id": note_id})
+
 if __name__ == "__main__":
     app.run(debug=True)

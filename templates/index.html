@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes Board</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Notes Board</h1>
 
     <form id="noteForm">
-        <label for="name">Name : </label><br>
-        <input type="text" name="name" id="name" required><br><br>
+        <div class="form-row"></div>
+            <label for="name">Name : </label><br>
+            <input type="text" name="name" id="name" required><br><br>
+        </div>
 
-        <label for="message">Message : </label><br>
-        <textarea name="message" id="message" required></textarea><br><br>
+        <div class="form-row"></div>
+            <label for="message">Message : </label><br>
+            <textarea name="message" id="message" required></textarea><br><br>
+        </div>
 
         <button type="submit">Add Note</button>
     </form>
 
     <h2>Notes</h2>
     <ul id = "notesList"></ul>
+
+    <template id="note-template">
+        <li>
+            <span class="note-text"></span>
+        </li>
+    </template>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
